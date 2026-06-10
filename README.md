@@ -13,7 +13,7 @@ This project implements a Retrieval-Augmented Generation (RAG) chatbot using a F
 - Uses Retrieval-Augmented Generation (RAG) to improve answer accuracy by grounding responses in retrieved document content.
 
 ## Project stack and languages
-- Python 3.14.x
+- Python 3.14.3
 - Streamlit
 - LangChain and LangChain Community
 - FAISS (via `faiss-cpu`)
