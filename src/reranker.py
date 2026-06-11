@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 class RerankingRetriever:
     """Wraps an existing retriever and reranks top candidates using a CrossEncoder.
@@ -8,7 +8,7 @@ class RerankingRetriever:
     
     Falls back to no-reranking if CrossEncoder is unavailable.
     """
-    def __init__(self, base_retriever, model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2", top_k: int = 6, final_k: int = 2, device: str | None = None):
+    def __init__(self, base_retriever, model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2", top_k: int = 6, final_k: int = 2, device: Optional[str] = None):
         self.base = base_retriever
         self.top_k = top_k
         self.final_k = final_k

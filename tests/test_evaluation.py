@@ -116,7 +116,7 @@ class TestGenerationEvaluator:
         generated = "What is the capital of France?"
         reference = "What is the capital of France?"
         sim = GenerationEvaluator.compute_semantic_similarity(generated, reference)
-        assert 0 <= sim <= 1.0
+        assert 0 <= sim <= 1.0001  # Allow small floating-point precision error
         assert sim > 0.9  # Should be very similar
 
     def test_evaluate(self):
