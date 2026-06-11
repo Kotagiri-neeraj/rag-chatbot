@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "dataset_name": "RAG Chatbot Evaluation Dataset",
+    "version": "1.0",
+    "created_at": "2026-06-11",
+    "total_samples": 10,
+    "description": "Benchmark evaluation dataset for RAG chatbot with ground truth answers and expected metrics"
+  },
+  "evaluation_samples": [
+    {
+      "id": 1,
+      "question": "What is machine learning?",
+      "ground_truth_answer": "Machine learning is a subset of artificial intelligence that enables systems to learn from data without being explicitly programmed.",
+      "ground_truth_docs": [
+        "Machine learning is a subset of AI",
+        "ML enables systems to learn from data"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.92,
+        "context_precision": 0.90,
+        "answer_relevancy": 0.91,
+        "ragas_score": 0.91,
+        "mrr": 0.95,
+        "ndcg_10": 0.93
+      }
+    },
+    {
+      "id": 2,
+      "question": "What is deep learning?",
+      "ground_truth_answer": "Deep learning is a subset of machine learning that uses neural networks with multiple layers to learn hierarchical representations of data.",
+      "ground_truth_docs": [
+        "Deep learning uses neural networks",
+        "Neural networks have multiple layers"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.89,
+        "context_precision": 0.88,
+        "answer_relevancy": 0.90,
+        "ragas_score": 0.89,
+        "mrr": 0.92,
+        "ndcg_10": 0.90
+      }
+    },
+    {
+      "id": 3,
+      "question": "What are transformers in NLP?",
+      "ground_truth_answer": "Transformers are deep learning models that use self-attention mechanisms to process sequences of data in parallel, revolutionizing natural language processing.",
+      "ground_truth_docs": [
+        "Transformers use self-attention mechanisms",
+        "They process sequences in parallel"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.94,
+        "context_precision": 0.92,
+        "answer_relevancy": 0.93,
+        "ragas_score": 0.93,
+        "mrr": 0.97,
+        "ndcg_10": 0.95
+      }
+    },
+    {
+      "id": 4,
+      "question": "How does FAISS work?",
+      "ground_truth_answer": "FAISS (Facebook AI Similarity Search) is a library for efficient similarity search and clustering of dense vectors, using approximate nearest neighbor search techniques.",
+      "ground_truth_docs": [
+        "FAISS is a vector search library",
+        "It uses approximate nearest neighbor search"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.88,
+        "context_precision": 0.87,
+        "answer_relevancy": 0.89,
+        "ragas_score": 0.88,
+        "mrr": 0.90,
+        "ndcg_10": 0.88
+      }
+    },
+    {
+      "id": 5,
+      "question": "What is BM25 retrieval?",
+      "ground_truth_answer": "BM25 is a probabilistic ranking function used in information retrieval that ranks documents based on keyword matching and term frequency-inverse document frequency.",
+      "ground_truth_docs": [
+        "BM25 is a ranking function",
+        "It uses keyword matching and TF-IDF"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.90,
+        "context_precision": 0.89,
+        "answer_relevancy": 0.91,
+        "ragas_score": 0.90,
+        "mrr": 0.93,
+        "ndcg_10": 0.91
+      }
+    },
+    {
+      "id": 6,
+      "question": "What is retrieval-augmented generation?",
+      "ground_truth_answer": "RAG is a technique that combines information retrieval with text generation, where relevant documents are retrieved first and then used to inform the generation of more accurate answers.",
+      "ground_truth_docs": [
+        "RAG combines retrieval and generation",
+        "Documents are retrieved to inform generation"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.93,
+        "context_precision": 0.91,
+        "answer_relevancy": 0.92,
+        "ragas_score": 0.92,
+        "mrr": 0.95,
+        "ndcg_10": 0.93
+      }
+    },
+    {
+      "id": 7,
+      "question": "How does cross-encoder reranking improve results?",
+      "ground_truth_answer": "Cross-encoders rerank retrieved documents by computing relevance scores for query-document pairs, improving result quality by placing the most relevant documents at the top.",
+      "ground_truth_docs": [
+        "Cross-encoders compute relevance scores",
+        "Reranking places most relevant docs first"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.91,
+        "context_precision": 0.90,
+        "answer_relevancy": 0.91,
+        "ragas_score": 0.91,
+        "mrr": 0.94,
+        "ndcg_10": 0.92
+      }
+    },
+    {
+      "id": 8,
+      "question": "What are embeddings?",
+      "ground_truth_answer": "Embeddings are numerical vector representations of text that capture semantic meaning, enabling machines to understand and process natural language in a continuous vector space.",
+      "ground_truth_docs": [
+        "Embeddings are vector representations",
+        "They capture semantic meaning"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.89,
+        "context_precision": 0.88,
+        "answer_relevancy": 0.90,
+        "ragas_score": 0.89,
+        "mrr": 0.92,
+        "ndcg_10": 0.90
+      }
+    },
+    {
+      "id": 9,
+      "question": "What is NDCG evaluation metric?",
+      "ground_truth_answer": "NDCG (Normalized Discounted Cumulative Gain) is a ranking metric that evaluates the quality of ranked results by considering both relevance and position, with more weight given to top-ranked items.",
+      "ground_truth_docs": [
+        "NDCG measures ranking quality",
+        "It considers position and relevance"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.92,
+        "context_precision": 0.91,
+        "answer_relevancy": 0.92,
+        "ragas_score": 0.92,
+        "mrr": 0.94,
+        "ndcg_10": 0.93
+      }
+    },
+    {
+      "id": 10,
+      "question": "What is semantic search?",
+      "ground_truth_answer": "Semantic search understands the meaning and intent behind search queries and documents, using embeddings and machine learning to find conceptually relevant results rather than just keyword matches.",
+      "ground_truth_docs": [
+        "Semantic search understands meaning",
+        "It uses embeddings for similarity"
+      ],
+      "expected_metrics": {
+        "faithfulness": 0.90,
+        "context_precision": 0.89,
+        "answer_relevancy": 0.91,
+        "ragas_score": 0.90,
+        "mrr": 0.93,
+        "ndcg_10": 0.91
+      }
+    }
+  ],
+  "aggregate_benchmarks": {
+    "faithfulness": {
+      "mean": 0.908,
+      "std": 0.015,
+      "min": 0.88,
+      "max": 0.94
+    },
+    "context_precision": {
+      "mean": 0.895,
+      "std": 0.012,
+      "min": 0.87,
+      "max": 0.92
+    },
+    "answer_relevancy": {
+      "mean": 0.910,
+      "std": 0.010,
+      "min": 0.89,
+      "max": 0.93
+    },
+    "ragas_score": {
+      "mean": 0.904,
+      "std": 0.012,
+      "min": 0.88,
+      "max": 0.93
+    },
+    "mrr": {
+      "mean": 0.935,
+      "std": 0.015,
+      "min": 0.90,
+      "max": 0.97
+    },
+    "ndcg_10": {
+      "mean": 0.917,
+      "std": 0.016,
+      "min": 0.88,
+      "max": 0.95
+    }
+  },
+  "usage_instructions": {
+    "evaluation": "Use this dataset to evaluate your RAG system performance",
+    "benchmark": "Compare your system's metrics against the expected_metrics for each question",
+    "improvement": "If your scores are below benchmarks, focus on: 1) Better retrieval, 2) Reranking quality, 3) Answer generation quality"
+  }
+}

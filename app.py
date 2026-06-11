@@ -56,12 +56,18 @@
 
 import streamlit as st
 from src.chatbot import get_chatbot
+from src.monitoring import MetricsCollector
 import time
 
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖")
 
 st.title("🤖 RAG Chatbot")
 st.info("Using a local HuggingFace model. No OpenAI API key is required.")
+
+# Initialize metrics collector (cached)
+@st.cache_resource
+def get_metrics_collector():
+    return MetricsCollector()
 
 @st.cache_resource
 def load_qa_chain():
@@ -72,6 +78,7 @@ def load_qa_chain():
     }
 
 qa_chain = load_qa_chain()
+metrics = get_metrics_collector()
 
 question = st.text_input("Ask a question")
 
@@ -79,6 +86,8 @@ if question:
     with st.spinner("Searching for an answer..."):
 
         start = time.time()
+        retrieval_start = time.time()
+        
         retriever = qa_chain["retriever"]
         llm = qa_chain["llm"]
 
@@ -88,6 +97,8 @@ if question:
         except Exception:
             # fallback to wrapped attribute used earlier
             docs = getattr(retriever, "wrapped", retriever).get_relevant_documents(question)
+        
+        retrieval_duration = time.time() - retrieval_start
 
         # build prompt from top documents - ask for comprehensive answer
         context = "\n\n".join([d.page_content for d in docs[:5]])
@@ -101,11 +112,29 @@ Question: {question}
 Comprehensive Answer:""" 
 
         # call the generate function (returns a plain string)
+        generation_start = time.time()
         output = llm(prompt)
+        generation_duration = time.time() - generation_start
+        
         # generate function returns a string directly
         text = str(output).strip() if output else "(No response generated)"
 
         end = time.time()
+        total_duration = end - start
+        
+        # Log metrics
+        try:
+            metrics.log_rag_cycle(
+                query=question,
+                retrieved_docs=[d.page_content for d in docs],
+                generated_answer=text,
+                total_duration=total_duration,
+                retrieval_duration=retrieval_duration,
+                generation_duration=generation_duration,
+                metadata={"source": "streamlit_app"}
+            )
+        except Exception as e:
+            st.warning(f"Metrics logging error: {str(e)[:100]}")
 
         st.write(f"Response time: {end-start:.2f} sec")
 

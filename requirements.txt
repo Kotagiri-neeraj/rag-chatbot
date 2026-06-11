@@ -13,4 +13,11 @@ rank-bm25
 langchain-huggingface
 torch
 torchvision
-
+pytest
+pytest-cov
+pytest-asyncio
+structlog
+python-json-logger
+scikit-learn
+numpy
+scipy
